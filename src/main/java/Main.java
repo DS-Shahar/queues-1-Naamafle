@@ -168,5 +168,30 @@ class Main {
             }
         return q2;
     }
+   public static boolean p151_ex1(Queue<Integer> q, int x) {
+        Queue<Integer> temp = cloneQueue(q);
+        int prev = q.head();
+        while (!temp.isEmpty()) {
+            if (temp.remove() == x && prev == x) {
+                return true;
+            }
+            prev = temp.head();
+            temp.remove();
+        }
+        return false;
+    }
+
+    public static int p151_ex2(Queue<Time> q) {
+        Queue<Time> temp = cloneQueueTime(q);
+        Time firstTime = temp.remove();
+        Time lastTime = firstTime;
+        while (!temp.isEmpty()) {
+            lastTime = temp.remove();
+        }
+        int firstInSeconds = firstTime.getHours() * 3600 + firstTime.getMinutes() * 60 + firstTime.getSeconds();
+        int lastInSeconds = lastTime.getHours() * 3600 + lastTime.getMinutes() * 60 + lastTime.getSeconds();
+        return lastInSeconds - firstInSeconds;
+    }
+ 
 
 }
